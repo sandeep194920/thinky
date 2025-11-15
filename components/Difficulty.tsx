@@ -1,4 +1,4 @@
-import { DifficultyT } from "@/types";
+import { DifficultyT } from "@/types/types";
 import React from "react";
 import { Text } from "react-native";
 

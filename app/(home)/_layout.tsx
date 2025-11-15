@@ -6,6 +6,8 @@ const Layout = () => {
   return (
     <Stack
       screenOptions={{
+        headerBackVisible: false,
+        animationTypeForReplace: "pop",
         headerStyle: {
           backgroundColor: colors.primary,
         },
@@ -16,8 +18,8 @@ const Layout = () => {
         },
       }}
     >
-      <Stack.Screen name="index" options={{ title: "Riddles" }} />
-      <Stack.Screen name="home-nested" options={{ title: "Riddles2" }} />
+      <Stack.Screen name="index" />
+      <Stack.Screen name="[id]" options={{ title: `Riddle` }} />
     </Stack>
   );
 };

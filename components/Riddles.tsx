@@ -1,11 +1,25 @@
 import RiddlePage from "@/components/RiddlePage";
-import React from "react";
+import { riddles } from "@/data";
+import { DifficultyT } from "@/types/types";
+import React, { FC } from "react";
 
-const question =
-  "A man pushes his car to a hotel and tells the owner he's bankrupt. Why?";
+interface RiddlesProps {
+  nextQuestion: number;
+}
 
-const Riddles = () => {
-  return <RiddlePage question={question} difficulty="easy" riddleNumber={4} />;
+const Riddles: FC<RiddlesProps> = ({ nextQuestion }) => {
+  const nextRiddle =
+    riddles.find((riddle) => riddle.id === nextQuestion) ?? riddles[0];
+
+  const { question, difficulty, id } = nextRiddle;
+
+  return (
+    <RiddlePage
+      question={question}
+      difficulty={difficulty as DifficultyT}
+      riddleNumber={id}
+    />
+  );
 };
 
 export default Riddles;

@@ -1,5 +1,5 @@
-import Riddles from "@/components/Riddles";
+import { Redirect } from "expo-router";
 
 export default function Index() {
-  return <Riddles />;
+  return <Redirect href="/1" />;
 }

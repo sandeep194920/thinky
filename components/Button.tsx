@@ -1,4 +1,4 @@
-import { ButtonVariant, ButtonWidth, Rounded } from "@/types";
+import { ButtonVariant, ButtonWidth, Rounded } from "@/types/types";
 import { Color, colors } from "@/utils/commonStyles";
 import React, { FC, PropsWithChildren, ReactNode } from "react";
 import { Pressable, PressableProps, Text, View } from "react-native";

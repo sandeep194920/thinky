@@ -16,7 +16,6 @@ const FavouritesLayout = () => {
       }}
     >
       <Stack.Screen name="favourites" options={{ title: "Favourites" }} />
-      <Stack.Screen name="fav2" options={{ title: "Favourites 2" }} />
     </Stack>
   );
 };

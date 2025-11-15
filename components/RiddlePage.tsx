@@ -2,9 +2,11 @@ import Button from "@/components/Button";
 import Difficulty from "@/components/Difficulty";
 import QuestionText from "@/components/QuestionText";
 import RiddleFooter from "@/components/RiddleFooterButtons";
-import { DifficultyT } from "@/types";
+import { riddles } from "@/data";
+import { DifficultyT } from "@/types/types";
 import { colors } from "@/utils/commonStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useRouter } from "expo-router";
 import React, { FC } from "react";
 import { Text, View } from "react-native";
 
@@ -25,6 +27,28 @@ const RiddlePage: FC<RiddlePageProps> = ({
   riddleNumber,
   favourite = false,
 }) => {
+  const router = useRouter();
+
+  const hidePrevious = riddleNumber === 1;
+  const hideNext = riddles.length === riddleNumber;
+
+  const handlePrevious = () => {
+    const prevQuestion = Math.max(1, riddleNumber - 1);
+
+    if (riddleNumber === 1) return;
+
+    if (router.canGoBack()) {
+      router.replace(`/${prevQuestion}`);
+    }
+  };
+
+  const handleNext = () => {
+    const nextQuestion = Math.min(riddles.length, riddleNumber + 1);
+    if (nextQuestion === riddles.length + 1) return;
+
+    router.push(`/${nextQuestion}`);
+  };
+
   return (
     <View className="flex-1 px-4 py-4 gap-1">
       <View className="flex-1 px-4 py-4 bg-white rounded-xl">
@@ -50,7 +74,12 @@ const RiddlePage: FC<RiddlePageProps> = ({
           Reveal Answer
         </Button>
       </View>
-      <RiddleFooter />
+      <RiddleFooter
+        hidePrevious={hidePrevious}
+        hideNext={hideNext}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
+      />
     </View>
   );
 };
