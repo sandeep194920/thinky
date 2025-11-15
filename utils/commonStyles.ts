@@ -6,6 +6,7 @@ export const colors = {
   unFavourite: "black",
   light: "#fff",
   tabBar: "#fefefeff",
+  lightGreen: "#F0FDF4",
   darkGreen: "#087b25ff",
   dark: "black",
 };

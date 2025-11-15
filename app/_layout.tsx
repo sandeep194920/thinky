@@ -10,9 +10,10 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    Roboto: require("../assets/fonts/roboto/Roboto-Bold.ttf"),
+    Roboto: require("../assets/fonts/roboto/Roboto-Regular.ttf"),
     Handlee: require("../assets/fonts/Handlee/Handlee-Regular.ttf"),
     RobotoItalic: require("../assets/fonts/roboto/Roboto-Italic.ttf"),
+    RobotoBold: require("../assets/fonts/roboto/Roboto-Bold.ttf"),
     RobotoBoldItalic: require("../assets/fonts/roboto/Roboto-BoldItalic.ttf"),
   });
 
