@@ -18,7 +18,7 @@ const Difficulty = ({ difficulty }: DifficultyProps) => {
     <Text
       className={`${colors[difficulty]} font-bold text-xs text-white px-3 py-0.5 rounded-full text-center`}
     >
-      {difficulty.toUpperCase()}
+      {difficulty.charAt(0).toUpperCase() + difficulty.slice(1).toLowerCase()}
     </Text>
   );
 };

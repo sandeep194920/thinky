@@ -1,6 +1,7 @@
 import { colors } from "@/utils/commonStyles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFonts } from "expo-font";
+import { LinearGradient } from "expo-linear-gradient";
 import { SplashScreen, Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
@@ -32,10 +33,20 @@ export default function RootLayout() {
       <StatusBar style="light" />
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: colors.primary,
-          headerStyle: {
-            backgroundColor: colors.primary,
-          },
+          tabBarActiveTintColor: colors.primaryLight,
+          tabBarInactiveTintColor: colors.gray,
+          headerBackground: () => (
+            <LinearGradient
+              colors={[
+                colors.gradientStart,
+                colors.gradientMiddle,
+                colors.gradientEnd,
+              ]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={{ flex: 1 }}
+            />
+          ),
           headerShadowVisible: false,
           headerTintColor: colors.light,
           tabBarStyle: {
@@ -60,8 +71,6 @@ export default function RootLayout() {
         <Tabs.Screen
           name="favourites"
           options={{
-            popToTopOnBlur: true,
-            headerShown: false,
             title: "Favourites",
             tabBarIcon: ({ color, focused }) => (
               <Ionicons

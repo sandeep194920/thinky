@@ -11,13 +11,14 @@ const Riddles: FC<RiddlesProps> = ({ nextQuestion }) => {
   const nextRiddle =
     riddles.find((riddle) => riddle.id === nextQuestion) ?? riddles[0];
 
-  const { question, difficulty, id } = nextRiddle;
+  const { question, difficulty, id, answer } = nextRiddle;
 
   return (
     <RiddlePage
       question={question}
       difficulty={difficulty as DifficultyT}
       riddleNumber={id}
+      answer={answer}
     />
   );
 };

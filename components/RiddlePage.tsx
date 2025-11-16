@@ -9,8 +9,8 @@ import { DifficultyT } from "@/types/types";
 import { colors } from "@/utils/commonStyles";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useRouter } from "expo-router";
-import React, { FC } from "react";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import React, { FC, useEffect } from "react";
 import { Alert, Text, View } from "react-native";
 /* 
 This component is a riddle page that shows question, riddle number, difficulty level, buttons and so on
@@ -20,28 +20,43 @@ interface RiddlePageProps {
   question: string;
   difficulty: DifficultyT;
   riddleNumber: number;
-  favourite?: boolean;
+  answer: string;
 }
 
 const RiddlePage: FC<RiddlePageProps> = ({
   question,
   difficulty,
   riddleNumber,
-  favourite = false,
+  answer,
 }) => {
   const router = useRouter();
 
-  // const revealRiddle = useRevealedStore((state) => state.revealRiddle);
-  // const isRevealed = useRevealedStore((state) =>
-  //   state.isRevealed(riddleNumber)
-  // );
-
-  const revealRiddle = useRevealedStore((state) => state.revealRiddle);
+  const toggleReveal = useRevealedStore((state) => state.toggleReveal);
   const revealed = useRevealedStore((state) => state.revealed);
   const isRiddleRevealed = revealed.includes(riddleNumber);
 
+  /* Code related to Favourite page -> to -> Riddle page */
+  const params = useLocalSearchParams();
+  const fromFavorites = params.fromFavorites === "true";
+  const furthestRiddle = useRevealedStore((state) => state.furthestRiddle);
+  const updateProgress = useRevealedStore((state) => state.updateProgress);
+  const canResume = fromFavorites && furthestRiddle >= riddleNumber;
+  const resumableRiddle = Math.min(furthestRiddle, riddles.length);
+
+  /* favorite toggle */
+  const toggleFavorite = useRevealedStore((state) => state.toggleFavourite);
+  const favorites = useRevealedStore((state) => state.favorites);
+  const isStarred = favorites.includes(riddleNumber);
+
   const hidePrevious = riddleNumber === 1;
   const hideNext = riddles.length === riddleNumber;
+
+  // Update progress when viewing this riddle (this keeps track of furtherestRiddle)
+  useEffect(() => {
+    if (!fromFavorites) {
+      updateProgress(riddleNumber);
+    }
+  }, [riddleNumber, fromFavorites, updateProgress]);
 
   const handlePrevious = () => {
     const prevQuestion = Math.max(1, riddleNumber - 1);
@@ -50,14 +65,27 @@ const RiddlePage: FC<RiddlePageProps> = ({
 
     if (router.canGoBack()) {
       router.replace(`/${prevQuestion}`);
+      // router.back();
     }
   };
 
   const handleNext = () => {
     const nextQuestion = Math.min(riddles.length, riddleNumber + 1);
     if (nextQuestion === riddles.length + 1) return;
-
     router.push(`/${nextQuestion}`);
+  };
+
+  // Resumes normal flow - so the users don't have to see the repeated questions if they don't want to
+  const handleResume = () => {
+    router.replace(`/${resumableRiddle}`);
+  };
+
+  const handleFavoriteToggle = () => {
+    toggleFavorite(riddleNumber);
+  };
+
+  const handleUnsolved = () => {
+    toggleReveal(riddleNumber);
   };
 
   const showRevealConfirmation = () => {
@@ -71,7 +99,7 @@ const RiddlePage: FC<RiddlePageProps> = ({
         },
         {
           text: "Reveal",
-          onPress: () => revealRiddle(riddleNumber),
+          onPress: () => toggleReveal(riddleNumber),
           style: "destructive",
         },
 
@@ -92,9 +120,10 @@ const RiddlePage: FC<RiddlePageProps> = ({
             <Text className="text-gray-500">Riddle #{riddleNumber}</Text>
             <Difficulty difficulty={difficulty} />
             <Ionicons
-              name={favourite ? "heart" : "heart-outline"}
+              onPress={handleFavoriteToggle}
+              name={isStarred ? "heart" : "heart-outline"}
               size={24}
-              color={favourite ? colors.favourite : colors.unFavourite}
+              color={isStarred ? colors.favourite : colors.unFavourite}
             />
           </View>
           <QuestionText question={question} />
@@ -102,8 +131,32 @@ const RiddlePage: FC<RiddlePageProps> = ({
         <RevealSection
           onReveal={showRevealConfirmation}
           revealed={isRiddleRevealed}
+          answer={answer}
+          onUnsolve={handleUnsolved}
         />
       </View>
+
+      {/* Resume to furthest */}
+
+      {canResume && (
+        <View
+          className="p-3 mt-1 rounded-lg"
+          style={{ backgroundColor: colors.lightBlue }}
+        >
+          <Text style={{ color: colors.darkBlue }} className="text-sm mb-2">
+            📍 You were on Riddle #{resumableRiddle}
+          </Text>
+          <Button
+            color="darkBlue"
+            variant="outlined"
+            classes={{ text: "text-sm" }}
+            onPress={handleResume}
+          >
+            Resume from Riddle #{resumableRiddle}
+          </Button>
+        </View>
+      )}
+
       <RiddleFooter
         hidePrevious={hidePrevious}
         hideNext={hideNext}
@@ -119,11 +172,15 @@ export default RiddlePage;
 interface RevealSectionProps {
   onReveal: VoidFunction;
   revealed?: boolean;
+  answer: string;
+  onUnsolve: VoidFunction;
 }
 
 const RevealSection: FC<RevealSectionProps> = ({
   onReveal,
   revealed = false,
+  answer,
+  onUnsolve,
 }) => {
   if (revealed) {
     return (
@@ -153,15 +210,16 @@ const RevealSection: FC<RevealSectionProps> = ({
             className="text-lg"
             style={{ color: colors.darkGreen, fontFamily: "Robot" }}
           >
-            5 minutes. Each machine makes one t-shirt in 5 minutes, so 100
-            machines will make 100 t-shirts in the same 5 minutes.
+            {answer}
           </Text>
         </View>
 
         <Button
           classes={{ root: "px-2", text: "text-base" }}
           variant="text"
-          color="primary"
+          color="primaryLight"
+          useGradient
+          onPress={onUnsolve}
         >
           Mark it Unsolved
         </Button>

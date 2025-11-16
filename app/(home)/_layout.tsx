@@ -1,4 +1,5 @@
 import { colors } from "@/utils/commonStyles";
+import { LinearGradient } from "expo-linear-gradient";
 import { Stack } from "expo-router";
 import React from "react";
 
@@ -9,8 +10,20 @@ const Layout = () => {
         headerBackVisible: false,
         animationTypeForReplace: "pop",
         headerStyle: {
-          backgroundColor: colors.primary,
+          backgroundColor: "transparent",
         },
+        headerBackground: () => (
+          <LinearGradient
+            colors={[
+              colors.gradientStart,
+              colors.gradientMiddle,
+              colors.gradientEnd,
+            ]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={{ flex: 1 }}
+          />
+        ),
         headerShadowVisible: false,
         headerTintColor: colors.light,
         contentStyle: {
