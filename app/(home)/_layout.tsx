@@ -38,3 +38,9 @@ const Layout = () => {
 };
 
 export default Layout;
+
+/* 
+
+A person who makes it doesnt need it
+
+*/

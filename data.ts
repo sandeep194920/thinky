@@ -1,4 +1,15 @@
-export const riddles = [
+import { DifficultyT } from "@/types/types";
+
+type Riddle = {
+  id: number;
+  number: number;
+  difficulty: DifficultyT;
+  question: string;
+  answer: string;
+  hint: string | null;
+};
+
+export const riddles: Riddle[] = [
   {
     id: 1,
     number: 1,
@@ -44,6 +55,15 @@ export const riddles = [
     question:
       "What comes once in a minute, twice in a moment, but never in a thousand years?",
     answer: "The letter M",
+    hint: null,
+  },
+  {
+    id: 6,
+    number: 6,
+    question:
+      "The man who invented it doesn't want it. The man who bought it doesn't need it. The man who needs it doesn't know it. What is it?",
+    difficulty: "sherlock",
+    answer: "A coffin",
     hint: null,
   },
 ];

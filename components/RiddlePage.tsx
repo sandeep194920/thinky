@@ -151,6 +151,7 @@ const RiddlePage: FC<RiddlePageProps> = ({
             variant="outlined"
             classes={{ text: "text-sm" }}
             onPress={handleResume}
+            // useGradient={false}
           >
             Resume from Riddle #{resumableRiddle}
           </Button>

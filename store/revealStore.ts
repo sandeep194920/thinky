@@ -1,3 +1,4 @@
+import { SortBy } from "@/types/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
@@ -7,6 +8,7 @@ interface RevealedStore {
   isHydrated: boolean;
   favorites: number[]; // holds user favorites
   furthestRiddle: number; // helper that holds the last seen riddle. This is helpful when user comes to riddles page from favorites
+  favoritesSortBy: SortBy;
 
   // Actions
   toggleReveal: (riddleNumber: number) => void;
@@ -14,7 +16,8 @@ interface RevealedStore {
   setHydrated: (hydrated: boolean) => void;
   toggleFavourite: (riddleNumber: number) => void;
   updateProgress: (riddleNumber: number) => void; // this helps updating last seen riddle when each question is shown
-  resetStore: () => void; // 👈 Add this
+  resetStore: () => void;
+  setFavoritesSortBy: (sortBy: SortBy) => void;
 }
 
 export const useRevealedStore = create<RevealedStore>()(
@@ -24,6 +27,7 @@ export const useRevealedStore = create<RevealedStore>()(
       favorites: [],
       isHydrated: false,
       furthestRiddle: 1,
+      favoritesSortBy: "newest",
 
       toggleReveal: (riddleNumber: number) => {
         set((state) => {
@@ -65,6 +69,10 @@ export const useRevealedStore = create<RevealedStore>()(
             return { favorites: [...state.favorites, riddleNumber] };
           }
         });
+      },
+
+      setFavoritesSortBy: (sortBy) => {
+        set({ favoritesSortBy: sortBy });
       },
 
       updateProgress(riddleNumber: number) {

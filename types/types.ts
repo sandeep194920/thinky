@@ -11,3 +11,5 @@ export type Rounded =
   | "rounded-lg"
   | "rounded-xl"
   | "rounded-2xl";
+
+export type SortBy = "newest" | "oldest" | "difficulty" | "number";

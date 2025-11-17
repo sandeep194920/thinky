@@ -78,7 +78,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
     return (
       <Pressable
         onPress={onPress}
-        className={`${baseClassName} ${classes?.root || ""} overflow-hidden`}
+        className={`${baseClassName} ${classes?.root || ""} overflow-hidden self-start`}
       >
         <LinearGradient
           colors={[
@@ -104,7 +104,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   if (useGradient && variant === "outlined") {
     return (
       <View
-        className={`${rounded} ${width === "full" ? "w-full" : ""} overflow-hidden`}
+        className={`${rounded} ${width === "full" ? "w-full" : ""} overflow-hidden self-start`}
       >
         <LinearGradient
           colors={[

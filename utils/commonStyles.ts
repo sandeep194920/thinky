@@ -13,11 +13,17 @@ export const colors = {
   lightBlue: "#DBEAFE",
   darkBlue: "#1E40AF",
   gray: "#878484",
+  lightGray: "#e7e7e7",
 
   // Add gradient colors
   gradientStart: "#020024",
   gradientMiddle: "#090979",
   gradientEnd: "#00d4ff",
+
+  green: "#22C55E",
+  yellow: "#EAB308",
+  orange: "#F97316",
+  purple: "#9C27B0",
 };
 
 export type Color = keyof typeof colors;
