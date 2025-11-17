@@ -11,7 +11,8 @@ import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { FC, useEffect } from "react";
-import { Alert, Text, View } from "react-native";
+import { Alert, Share, Text, TouchableOpacity, View } from "react-native";
+
 /* 
 This component is a riddle page that shows question, riddle number, difficulty level, buttons and so on
 */
@@ -64,7 +65,7 @@ const RiddlePage: FC<RiddlePageProps> = ({
     if (riddleNumber === 1) return;
 
     if (router.canGoBack()) {
-      router.replace(`/${prevQuestion}`);
+      router.replace(`/riddle/${prevQuestion}`);
       // router.back();
     }
   };
@@ -72,12 +73,12 @@ const RiddlePage: FC<RiddlePageProps> = ({
   const handleNext = () => {
     const nextQuestion = Math.min(riddles.length, riddleNumber + 1);
     if (nextQuestion === riddles.length + 1) return;
-    router.push(`/${nextQuestion}`);
+    router.push(`/riddle/${nextQuestion}`);
   };
 
   // Resumes normal flow - so the users don't have to see the repeated questions if they don't want to
   const handleResume = () => {
-    router.replace(`/${resumableRiddle}`);
+    router.replace(`/riddle/${resumableRiddle}`);
   };
 
   const handleFavoriteToggle = () => {
@@ -86,6 +87,22 @@ const RiddlePage: FC<RiddlePageProps> = ({
 
   const handleUnsolved = () => {
     toggleReveal(riddleNumber);
+  };
+
+  const handleShare = async () => {
+    const deepLink = `thinky://riddle/${riddleNumber}`;
+
+    try {
+      const result = await Share.share({
+        message: `🧩 Can you solve this riddle?\n\n"${question}"\n\nRiddle #${riddleNumber} - ${difficulty}\n\nOpen in Thinky: ${deepLink}`,
+      });
+
+      if (result.action === Share.sharedAction) {
+        console.log("Shared with deep link!");
+      }
+    } catch (error) {
+      Alert.alert("Error", "Could not share riddle");
+    }
   };
 
   const showRevealConfirmation = () => {
@@ -119,12 +136,27 @@ const RiddlePage: FC<RiddlePageProps> = ({
           <View className="flex-row items-center justify-between mb-4">
             <Text className="text-gray-500">Riddle #{riddleNumber}</Text>
             <Difficulty difficulty={difficulty} />
-            <Ionicons
-              onPress={handleFavoriteToggle}
-              name={isStarred ? "heart" : "heart-outline"}
-              size={24}
-              color={isStarred ? colors.favourite : colors.unFavourite}
-            />
+
+            <View className="flex-row gap-8 items-center">
+              {/* Favorite Button */}
+              <TouchableOpacity onPress={handleFavoriteToggle}>
+                <Ionicons
+                  onPress={handleFavoriteToggle}
+                  name={isStarred ? "heart" : "heart-outline"}
+                  size={24}
+                  color={isStarred ? colors.favourite : colors.unFavourite}
+                />
+              </TouchableOpacity>
+
+              {/* Share Button */}
+              <TouchableOpacity onPress={handleShare}>
+                <Ionicons
+                  name="share-social"
+                  size={24}
+                  color={colors.primary}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
           <QuestionText question={question} />
         </View>

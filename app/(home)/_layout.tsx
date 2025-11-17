@@ -32,15 +32,9 @@ const Layout = () => {
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="[id]" options={{ title: `Riddle` }} />
+      <Stack.Screen name="/riddle/[id]" options={{ title: `Riddle` }} />
     </Stack>
   );
 };
 
 export default Layout;
-
-/* 
-
-A person who makes it doesnt need it
-
-*/

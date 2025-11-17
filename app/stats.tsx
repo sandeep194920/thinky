@@ -1,6 +1,7 @@
 import { useRevealedStore } from "@/store/revealStore";
 import { colors } from "@/utils/commonStyles";
 import { calculateStats } from "@/utils/statsHelper";
+import { LinearGradient } from "expo-linear-gradient";
 import { ScrollView, Text, View } from "react-native";
 
 const difficultyConfig = {
@@ -53,17 +54,36 @@ export default function Stats() {
       {/* Progress */}
       <View className="bg-white rounded-xl p-4 mb-6">
         <View className="flex-row items-center justify-between mb-2">
-          <Text className="text-gray-700 font-semibold">Progress</Text>
+          <Text className="text-gray-700 font-semibold">
+            Progress (Riddles Seen)
+          </Text>
           <Text className="text-gray-500">
             Riddle #{stats.furthestRiddle}/{stats.totalRiddles}
           </Text>
         </View>
-        <View className="h-2 bg-gray-200 rounded-full overflow-hidden">
+        {/* <View className="h-2 bg-gray-200 rounded-full overflow-hidden">
           <View
             className="h-full rounded-full"
             style={{
               backgroundColor: colors.primary,
               width: `${(stats.furthestRiddle / stats.totalRiddles) * 100}%`,
+            }}
+          />
+        </View> */}
+
+        <View className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <LinearGradient
+            colors={[
+              colors.gradientStart,
+              colors.gradientMiddle,
+              colors.gradientEnd,
+            ]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={{
+              width: `${(stats.furthestRiddle / stats.totalRiddles) * 100}%`,
+              height: "100%",
+              borderRadius: 40,
             }}
           />
         </View>
