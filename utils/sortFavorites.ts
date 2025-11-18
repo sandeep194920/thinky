@@ -3,7 +3,7 @@ import { DifficultyT, SortBy } from "@/types/types";
 
 interface Riddle {
   id: number;
-  number: number;
+  displayOrder: number;
   difficulty: DifficultyT;
   question: string;
 }
@@ -51,7 +51,7 @@ export const sortFavorites = (
 
     case "number":
       // Sort by riddle number (ascending)
-      return sorted.sort((a, b) => a.number - b.number);
+      return sorted.sort((a, b) => a.displayOrder - b.displayOrder);
 
     default:
       return sorted;

@@ -1,4 +1,5 @@
 // app/(home)/settings.tsx
+import { riddles } from "@/data";
 import { useRevealedStore } from "@/store/revealStore";
 import { colors } from "@/utils/commonStyles";
 import { Ionicons } from "@expo/vector-icons";
@@ -7,6 +8,7 @@ import { Alert, Text, TouchableOpacity, View } from "react-native";
 
 export default function Settings() {
   const resetStore = useRevealedStore((state) => state.resetStore);
+  const totalRiddles = riddles.length;
 
   const handleRateUs = () => {
     // We'll implement this when you publish
@@ -54,10 +56,7 @@ export default function Settings() {
 
         <View className="flex-row items-center justify-between py-3">
           <Text className="text-gray-700">Total Riddles</Text>
-          <Text className="text-gray-600 font-semibold">
-            {/* We'll import riddles */}
-            100
-          </Text>
+          <Text className="text-gray-600 font-semibold">{totalRiddles}</Text>
         </View>
       </View>
 
@@ -83,7 +82,9 @@ export default function Settings() {
           >
             <View className="flex-row items-center gap-3">
               <Ionicons name="trash" size={24} color={colors.favourite} />
-              <Text className="text-red-600 font-semibold">Reset All Data</Text>
+              <Text className="text-red-600 font-semibold">
+                Reset All Data (Dev)
+              </Text>
             </View>
             <Ionicons
               name="chevron-forward"

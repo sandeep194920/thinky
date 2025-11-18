@@ -1,6 +1,6 @@
 import Button from "@/components/Button";
 import Difficulty from "@/components/Difficulty";
-import QuestionText from "@/components/QuestionText";
+import Question from "@/components/Question";
 import RiddleFooter from "@/components/RiddleFooterButtons";
 import Tags from "@/components/Tags";
 import { riddles } from "@/data";
@@ -11,7 +11,14 @@ import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { FC, useEffect } from "react";
-import { Alert, Share, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  ScrollView,
+  Share,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 /* 
 This component is a riddle page that shows question, riddle number, difficulty level, buttons and so on
@@ -22,6 +29,8 @@ interface RiddlePageProps {
   difficulty: DifficultyT;
   riddleNumber: number;
   answer: string;
+  image?: string;
+  hint: string | null;
 }
 
 const RiddlePage: FC<RiddlePageProps> = ({
@@ -29,6 +38,8 @@ const RiddlePage: FC<RiddlePageProps> = ({
   difficulty,
   riddleNumber,
   answer,
+  hint,
+  image,
 }) => {
   const router = useRouter();
 
@@ -130,9 +141,12 @@ const RiddlePage: FC<RiddlePageProps> = ({
   };
 
   return (
-    <View className="flex-1 px-4 py-4 gap-1">
+    <View className="flex-1 px-4 py-4">
       <View className="flex-1 px-4 py-4 bg-white rounded-xl">
-        <View className="flex-1 rounded-xl mb-4">
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          className="flex-1 rounded-xl mb-4"
+        >
           <View className="flex-row items-center justify-between mb-4">
             <Text className="text-gray-500">Riddle #{riddleNumber}</Text>
             <Difficulty difficulty={difficulty} />
@@ -158,12 +172,13 @@ const RiddlePage: FC<RiddlePageProps> = ({
               </TouchableOpacity>
             </View>
           </View>
-          <QuestionText question={question} />
-        </View>
+          <Question question={question} image={image} />
+        </ScrollView>
         <RevealSection
           onReveal={showRevealConfirmation}
           revealed={isRiddleRevealed}
           answer={answer}
+          hint={hint}
           onUnsolve={handleUnsolved}
         />
       </View>
@@ -183,7 +198,6 @@ const RiddlePage: FC<RiddlePageProps> = ({
             variant="outlined"
             classes={{ text: "text-sm" }}
             onPress={handleResume}
-            // useGradient={false}
           >
             Resume from Riddle #{resumableRiddle}
           </Button>
@@ -206,6 +220,7 @@ interface RevealSectionProps {
   onReveal: VoidFunction;
   revealed?: boolean;
   answer: string;
+  hint: string | null;
   onUnsolve: VoidFunction;
 }
 
@@ -214,6 +229,7 @@ const RevealSection: FC<RevealSectionProps> = ({
   revealed = false,
   answer,
   onUnsolve,
+  hint,
 }) => {
   if (revealed) {
     return (
@@ -260,15 +276,35 @@ const RevealSection: FC<RevealSectionProps> = ({
     );
   }
 
+  const showHint = () => {
+    if (hint) {
+      Alert.alert(hint);
+    }
+  };
+
   return (
-    <Button
-      color="light"
-      backgroundColor="primary"
-      variant="contained"
-      width="full"
-      onPress={onReveal}
-    >
-      Reveal Answer
-    </Button>
+    <View className="flex gap-1 items-center justify-center">
+      {hint && (
+        <Button
+          color="primaryLight"
+          variant="contained"
+          onPress={showHint}
+          useGradient={false}
+          width="full"
+        >
+          Show Hint
+        </Button>
+      )}
+
+      <Button
+        color="light"
+        width="full"
+        backgroundColor="primary"
+        variant="contained"
+        onPress={onReveal}
+      >
+        Reveal Answer
+      </Button>
+    </View>
   );
 };

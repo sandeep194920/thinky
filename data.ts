@@ -24,7 +24,7 @@ export const riddles: Riddle[] = [
   {
     id: 2,
     displayOrder: 2,
-    difficulty: "medium",
+    difficulty: "easy",
     question:
       "If it takes 5 machines 5 minutes to make 5 t-shirts, how long will it take 100 machines to make 100 t-shirts?",
     answer:
@@ -43,13 +43,12 @@ export const riddles: Riddle[] = [
   {
     id: 4,
     displayOrder: 4,
-    difficulty: "hard",
+    difficulty: "easy",
     question:
-      "A man pushes his car to a hotel and tells the owner he's bankrupt. Why?",
-    answer: "He's playing Monopoly",
-    hint: "This isn't about real life transportation.",
+      "What English word retains the same pronunciation, even after you take away four of its five letters?",
+    answer: "Queue",
+    hint: "Think about people standing in a line",
   },
-
   {
     id: 5,
     displayOrder: 5,
@@ -64,9 +63,9 @@ export const riddles: Riddle[] = [
   {
     id: 6,
     displayOrder: 6,
-    difficulty: "easy",
+    difficulty: "medium",
     question:
-      "I am four times as old as my daughter. In 20 years time I shall be twice as old as her. How old are we now?",
+      "I am four times as old as my daughter. After 20 years, I shall be twice as old as her. How old are we now?",
     answer: "I am 40 and my daughter is 10.",
     hint: null,
   },
@@ -97,7 +96,6 @@ export const riddles: Riddle[] = [
     answer: "A map",
     hint: "I can fit in your hand.",
   },
-
   {
     id: 10,
     displayOrder: 10,
@@ -122,7 +120,6 @@ export const riddles: Riddle[] = [
     answer: "An egg",
     hint: null,
   },
-
   {
     id: 13,
     displayOrder: 13,
@@ -134,7 +131,7 @@ export const riddles: Riddle[] = [
   {
     id: 14,
     displayOrder: 14,
-    difficulty: "medium",
+    difficulty: "easy",
     question: "What word is spelled incorrectly in every dictionary?",
     answer: "Incorrectly",
     hint: "Think literally about the question.",
@@ -520,9 +517,9 @@ export const riddles: Riddle[] = [
     displayOrder: 59,
     difficulty: "hard",
     question:
-      "What English word retains the same pronunciation, even after you take away four of its five letters?",
-    answer: "Queue",
-    hint: "Think about people standing in a line",
+      "A man pushes his car to a hotel and tells the owner he's bankrupt. Why?",
+    answer: "He's playing Monopoly",
+    hint: "This isn't about real life transportation.",
   },
   {
     id: 60,
@@ -757,7 +754,7 @@ export const riddles: Riddle[] = [
     displayOrder: 85,
     difficulty: "sherlock",
     question:
-      "There are three identical boxes in front of you, but only one of them has a prize inside. Each box is labeled with a statement, but only one of the statements is true.\n\n* **Box 1 Statement:** The prize is in this box.\n* **Box 2 Statement:** The prize is not in this box.\n* **Box 3 Statement:** The prize is not in box one.\n\nCan you identify which box has the prize?",
+      "There are three identical boxes in front of you, but only one of them has a prize inside. Each box is labeled with a statement, but only one of the statements is true.\n\nBox 1 says: Prize is in this box.\nBox 2 says: Prize is not in this box.\nBox 3 says: Prize is not in Box 1.\n\nCan you identify which box has the prize?",
     answer: "The prize is in Box 2. And the statement on Box 3 is right",
     hint: "The central clue is that **only one** of the three statements on the boxes is true. Use this rule to test each box's statement and eliminate the cases that result in a contradiction (i.e., where two statements end up being true).",
     image: "85",
@@ -773,3 +770,8 @@ export const riddles: Riddle[] = [
     image: "86",
   },
 ];
+
+/* 
+16, 8, 4, 2, 1 puzzle
+
+*/

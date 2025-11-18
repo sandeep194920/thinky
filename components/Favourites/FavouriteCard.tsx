@@ -9,14 +9,14 @@ import { Pressable, Text, View } from "react-native";
 
 interface FavoriteCardProps {
   id: number;
-  number: number;
+  displayOrder: number;
   question: string;
   difficulty: DifficultyT;
 }
 
 const FavouriteCard: FC<FavoriteCardProps> = ({
   id,
-  number,
+  displayOrder,
   question,
   difficulty,
 }) => {
@@ -25,7 +25,7 @@ const FavouriteCard: FC<FavoriteCardProps> = ({
 
   const handlePress = () => {
     router.replace({
-      pathname: "/[id]",
+      pathname: "/riddle/[id]",
       params: { fromFavorites: "true", id },
     });
   };
@@ -37,7 +37,7 @@ const FavouriteCard: FC<FavoriteCardProps> = ({
   return (
     <Pressable className="p-4 rounded-xl bg-white gap-1" onPress={handlePress}>
       <View className="flex-row items-center justify-between">
-        <Text className="text-gray-500">Riddle #{number}</Text>
+        <Text className="text-gray-500">Riddle #{displayOrder}</Text>
         <Difficulty difficulty={difficulty} />
         <Ionicons
           onPress={handleToggle}

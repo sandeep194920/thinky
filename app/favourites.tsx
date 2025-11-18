@@ -97,13 +97,13 @@ export default function Favourites() {
       {/* Favorites List */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="gap-3 pb-4">
-          {sortedRiddles.map(({ id, question, difficulty, number }) => (
+          {sortedRiddles.map(({ id, question, difficulty, displayOrder }) => (
             <FavouriteCard
               key={id}
               id={id}
               question={question}
               difficulty={difficulty as DifficultyT}
-              number={number}
+              displayOrder={displayOrder}
             />
           ))}
         </View>
