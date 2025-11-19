@@ -105,7 +105,7 @@ const RiddlePage: FC<RiddlePageProps> = ({
 
     try {
       const result = await Share.share({
-        message: `🧩 Can you solve this riddle?\n\n"${question}"\n\nRiddle #${riddleNumber} - ${difficulty}\n\nOpen in Thinky: ${deepLink}`,
+        message: `🤔 Can you solve this riddle?\n\n"${question}"\n\nRiddle #${riddleNumber} - ${difficulty}\n\nOpen in Thinky: ${deepLink}`,
       });
 
       if (result.action === Share.sharedAction) {
@@ -123,7 +123,7 @@ const RiddlePage: FC<RiddlePageProps> = ({
       [
         {
           text: "Share this riddle",
-          onPress: () => console.log("Sharing the riddle"),
+          onPress: () => handleShare(),
         },
         {
           text: "Reveal",

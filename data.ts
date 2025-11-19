@@ -34,12 +34,15 @@ export const riddles: Riddle[] = [
   {
     id: 3,
     displayOrder: 3,
-    difficulty: "easy",
+    difficulty: "sherlock",
     question:
-      "What has keys but no locks, space but no room, and you can enter but can't go inside?",
-    answer: "A keyboard",
-    hint: "You use it every day with your computer.",
+      "A blind man is alone on a deserted island. He has two blue pills and two red pills. He must take exactly one red pill and one blue pill, or he will die. How can he take the correct dose?",
+    answer:
+      "He makes halves of every pill and consumes that half while keeping the one half aside for each of the pill. This 4 halves will make exactly what he needs to stay alive.",
+    hint: "Each pill has a groove that makes it easy to split.",
+    image: "5",
   },
+
   {
     id: 4,
     displayOrder: 4,
@@ -52,14 +55,13 @@ export const riddles: Riddle[] = [
   {
     id: 5,
     displayOrder: 5,
-    difficulty: "sherlock",
+    difficulty: "easy",
     question:
-      "A blind man is alone on a deserted island. He has two blue pills and two red pills. He must take exactly one red pill and one blue pill, or he will die. How can he take the correct dose?",
-    answer:
-      "He makes halves of every pill and consumes that half while keeping the one half aside for each of the pill. This 4 halves will make exactly what he needs to stay alive.",
-    hint: "Each pill has a groove that makes it easy to split.",
-    image: "5",
+      "What has keys but no locks, space but no room, and you can enter but can't go inside?",
+    answer: "A keyboard",
+    hint: "You use it every day with your computer.",
   },
+
   {
     id: 6,
     displayOrder: 6,
@@ -76,7 +78,7 @@ export const riddles: Riddle[] = [
     question:
       "The man who invented it doesn't want it. The man who bought it doesn't need it. The man who needs it doesn't know it. What is it?",
     answer: "A coffin",
-    hint: null,
+    hint: "A dead man",
   },
 
   {
@@ -99,7 +101,7 @@ export const riddles: Riddle[] = [
   {
     id: 10,
     displayOrder: 10,
-    difficulty: "hard",
+    difficulty: "medium",
     question: "What has hands and a face, but can't hold anything or smile?",
     answer: "A clock",
     hint: "It constantly runs.",
@@ -596,11 +598,12 @@ export const riddles: Riddle[] = [
   {
     id: 68,
     displayOrder: 68,
-    difficulty: "hard",
+    difficulty: "easy",
     question:
-      "What is greater than God and more evil than the devil? The poor have it, the rich need it, and if you eat it you'll die. What is it?",
-    answer: "Nothing",
-    hint: "It is the absence of something.",
+      "An old man wanted to leave all of his money to one of his three sons, but he didn't know which one he should give it to. He gave each of them a few coins and told them to buy something that would be able to fill their living room. The first man bought straw, but there was not enough to fill the room. The second bought some sticks, but they still did not fill the room. The third man bought two things that filled the room, so he obtained his father's fortune. What were the two things that the man bought?",
+    answer:
+      "The wise son bought a candle and a box of matches. After lighting the candle, the light filled the entire room.",
+    hint: null,
   },
   {
     id: 69,
@@ -696,7 +699,7 @@ export const riddles: Riddle[] = [
   {
     id: 79,
     displayOrder: 79,
-    difficulty: "hard",
+    difficulty: "medium",
     question:
       "What is the beginning of eternity, the end of time and space, the beginning of every end, and the end of every place?",
     answer: "The letter 'E'",
@@ -759,9 +762,70 @@ export const riddles: Riddle[] = [
     hint: "The central clue is that **only one** of the three statements on the boxes is true. Use this rule to test each box's statement and eliminate the cases that result in a contradiction (i.e., where two statements end up being true).",
     image: "85",
   },
+
   {
     id: 86,
     displayOrder: 86,
+    difficulty: "easy",
+    question:
+      "Five apples are in a basket. How do you divide them among five girls so that each girl gets an apple, but one apple remains in the basket?",
+    hint: null,
+    answer: "Give the fifth girl her apple in the basket.",
+  },
+
+  {
+    id: 87,
+    displayOrder: 87,
+    difficulty: "hard",
+    question:
+      "A hotel owner needs to be able to pay a guest any exact amount of gold coins from 1 to 31 grams (representing the day of the month they visit). To minimize the number of coins he carries, he has five gold coins of different weights. What are the weights of these five coins?",
+    hint: "Think about how computers count, or how you can combine these coins to make the number 31.",
+    answer:
+      "16, 8, 4, 2, and 1 grams. These weights (powers of two) allow you to create any combination up to 31 by using a binary system. For example, 14 grams = 8 + 4 + 2, and 31 grams = 16 + 8 + 4 + 2 + 1.",
+    image: "87",
+  },
+
+  {
+    id: 88,
+    displayOrder: 88,
+    difficulty: "medium",
+    question:
+      "To enter a secured building, a guard asks you a number and you must reply with the correct answer. The guard asks '12', and the guest replies '6'. The guard asks '6', and the guest replies '3'. The guard asks you '10', and you reply '5'. The guard does not allow you to enter. Why was your answer wrong, and what should you have said?",
+    hint: "The rule is not mathematical. Count something visible about the number.",
+    answer:
+      "The correct answer should have been 3. The rule is to reply with the number of letters in the word form of the number the guard says. '12' (Twelve) has 6 letters. '6' (Six) has 3 letters. '10' (Ten) has 3 letters.",
+  },
+  {
+    id: 89,
+    displayOrder: 89,
+    difficulty: "easy",
+    question: "What weighs more, a pound of feathers or a pound of stones?",
+    answer: "The same. They both weigh a pound!",
+    hint: null,
+  },
+  {
+    id: 90,
+    difficulty: "easy",
+    displayOrder: 90,
+    question:
+      "Sometimes I am born in silence, Other times, no. I am unseen, But I make my presence known. In time, I fade without a trace. I harm no one, but I am unpopular with all. What am I?",
+    hint: "Related to indigestion",
+    answer: "A fart",
+  },
+  {
+    id: 91,
+    displayOrder: 91,
+    difficulty: "medium",
+    question:
+      "In an archery competition, a contestant must score exactly 100 points. The available point values on the target are 16, 17, 23, 24, 39, and 40. There is no limit to the number of arrows you can shoot. Which combination of shots results in a final score of 100?",
+    hint: "You will need a total of six arrows, and you should use only two of the available point values.",
+    answer:
+      "Two arrows hitting 16 points and four arrows hitting 17 points. (2 * 16) + (4 * 17) = 32 + 68 = 100.",
+    image: "89",
+  },
+  {
+    id: 92,
+    displayOrder: 92,
     difficulty: "hard",
     question:
       "You have snooker balls reading 1, 3, 5, 7, 9, 11, 13 and 15. Which 3 balls would you pick so their sum becomes 30?",
@@ -769,9 +833,81 @@ export const riddles: Riddle[] = [
     answer: "11 + 13 + 6 (turn the 9 ball upside down to make 6)",
     image: "86",
   },
+  {
+    id: 93,
+    displayOrder: 93,
+    difficulty: "hard",
+    question:
+      "What is greater than God and more evil than the devil? The poor have it, the rich need it, and if you eat it you'll die. What is it?",
+    answer: "Nothing",
+    hint: "It is the absence of something.",
+  },
+  {
+    id: 94,
+    displayOrder: 94,
+    difficulty: "easy",
+    question:
+      "If you drop me, I'm sure to crack. Give me a smile, and I'll always smile back. What am I?",
+    answer: "A mirror",
+    hint: "Reflection",
+  },
+  {
+    id: 95,
+    displayOrder: 95,
+    difficulty: "easy",
+    question: "What two things can you never eat for breakfast?",
+    answer: "Lunch and dinner.",
+    hint: null,
+  },
+  {
+    id: 96,
+    difficulty: "easy",
+    displayOrder: 96,
+    question:
+      "The first two letters signify a male, the first three letters signify a female, the first four letters signify a great, while the entire word signifies a great woman. What is the word?",
+    hint: "Actor",
+    answer: "Heroine",
+  },
+  {
+    id: 97,
+    displayOrder: 97,
+    difficulty: "medium",
+    question:
+      "There are two bodies on the floor. They are surrounded by water and broken glass. How did they die?",
+    hint: "They are not human bodies",
+    answer:
+      "The bodies were goldfish because their fishbowl got knocked over onto the floor and broke.",
+  },
+  {
+    id: 98,
+    displayOrder: 98,
+    difficulty: "hard",
+    question:
+      "Four people need to cross a dilapidated bridge at night. They have only one torch, and the bridge can only hold two people at a time. The crossing times are 1 minute, 2 minutes, 5 minutes, and 10 minutes. When two people cross together, they must move at the pace of the slower person. How quickly can all four people get across?",
+    hint: "The fastest way requires the two slowest people (5 and 10) to cross together, and the fastest person (1) must act as the primary torch courier.",
+    answer:
+      "17 minutes. The key is for the two slowest people (5 and 10) to cross together to save time. \n\n**Steps:**\n1. (1 and 2) cross together (takes 2 min).\n2. (1) returns with the torch (takes 1 min).\n3. (10 and 5) cross together (takes 10 min).\n4. (2) returns with the torch (takes 2 min).\n5. (1 and 2) cross together (takes 2 min).\n\nTotal Time: 2 + 1 + 10 + 2 + 2 = 17 minutes.",
+    image: "98",
+  },
+
+  {
+    id: 99,
+    displayOrder: 99,
+    difficulty: "medium",
+    question:
+      "A farmer must cross a river and take with him a wolf, a sheep, and a head of cabbage. He has a small boat that can only carry himself and one other item (either the wolf, the sheep, or the cabbage) at a time. If left alone, the wolf will eat the sheep, and the sheep will eat the cabbage. How can the farmer get all three across the river safely?",
+    hint: "The solution requires seven total crossings, and one item must temporarily be brought back across the river.",
+    answer:
+      "The key is to never leave the wolf and sheep, or the sheep and cabbage, unsupervised. \n\n**Steps:**\n1. Take the **Sheep** across.\n2. Return alone.\n3. Take the **Wolf** across.\n4. Bring the **Sheep** back.\n5. Take the **Cabbage** across.\n6. Return alone.\n7. Take the **Sheep** across.\n\nAll items are safely on the other side.",
+  },
+
+  {
+    id: 100,
+    displayOrder: 100,
+    difficulty: "medium",
+    question:
+      "There is a dead man in the middle of a field, nothing is around him and there are no footprints of any sort. There is an unopened package next to him. How did he die?",
+    hint: "As he approached the field he knew he was going to die.",
+    answer: "Failed Parachute",
+  },
 ];
-
-/* 
-16, 8, 4, 2, 1 puzzle
-
-*/

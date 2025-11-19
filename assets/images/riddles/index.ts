@@ -5,4 +5,8 @@ export const riddleImages: Record<string, any> = {
   "83": require("./83.png"),
   "85": require("./85.png"),
   "86": require("./86.png"),
+  "87": require("./87.png"),
+  "89": require("./89.png"),
+  "98": require("./98.png"),
+  "99": require("./99.png"),
 };

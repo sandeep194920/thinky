@@ -139,7 +139,7 @@ export default function Stats() {
       >
         <Text className="text-4xl mb-2">🎯</Text>
         <Text className="text-lg font-bold text-gray-800 mb-1">
-          Daily Challenge
+          Daily Challenge + More Riddles
         </Text>
         <Text className="text-sm text-gray-500">Coming Soon!</Text>
       </View>
