@@ -6,7 +6,10 @@ import * as Linking from "expo-linking";
 import { SplashScreen, Tabs, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
+import { vexo } from "vexo-analytics";
 import "../global.css";
+
+vexo(process.env.EXPO_PUBLIC_VEXO_API_KEY || "");
 
 SplashScreen.preventAutoHideAsync();
 

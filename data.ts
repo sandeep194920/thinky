@@ -910,4 +910,14 @@ export const riddles: Riddle[] = [
     hint: "As he approached the field he knew he was going to die.",
     answer: "Failed Parachute",
   },
+  {
+    id: 101,
+    displayOrder: 101,
+    difficulty: "sherlock",
+    question:
+      "A prisoner is told: 'If you tell a lie, we will hang you, and if you tell the truth, we will shoot you.' What did the prisoner say to save himself?",
+    hint: "A self-referential statement that creates a paradox.",
+    answer:
+      "He said: 'You will hang me.' This creates a paradox — if it's true, they must shoot him, which makes it false. If it's false, they must hang him, which makes it true. They cannot consistently carry out either punishment, so they must let him go.",
+  },
 ];
