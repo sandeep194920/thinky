@@ -30,7 +30,9 @@
       "bundler": "metro"
     },
     "plugins": [
-      ["expo-font"],
+      [
+        "expo-font"
+      ],
       "expo-router",
       [
         "expo-splash-screen",
@@ -48,6 +50,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "67c07615-375e-4c49-9e0b-dcd7735c40f6"
+      }
+    },
+    "owner": "sandeepamarnath"
   }
 }
