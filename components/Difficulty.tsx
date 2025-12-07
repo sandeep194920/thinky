@@ -18,7 +18,7 @@ const Difficulty = ({ difficulty }: DifficultyProps) => {
   return (
     <Text
       style={{ backgroundColor: styles[difficulty] }}
-      className={`font-bold text-xs text-white px-3 py-0.5 rounded-full text-center`}
+      className={`font-bold text-white px-3 py-0.5 rounded-full text-center`}
     >
       {difficulty.charAt(0).toUpperCase() + difficulty.slice(1).toLowerCase()}
     </Text>
